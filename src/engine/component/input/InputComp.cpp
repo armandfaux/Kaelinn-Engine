@@ -1,0 +1,17 @@
+#include "InputComp.hpp"
+
+using namespace ge;
+
+// STOCK ID CLIENT
+//  CHeck mov id comp id event
+
+InputComp::InputComp() {
+    _name = "Input";
+    _clientId = 0;
+}
+
+void InputComp::setClientId(uint32_t id) { _clientId = id; }
+
+uint32_t InputComp::getClientId() { return _clientId; }
+
+std::shared_ptr<IComponent> InputComp::clone() { return std::make_shared<InputComp>(); }
