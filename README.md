@@ -1,9 +1,9 @@
 ## 👥 The Team
 
-#### - Armand Faux - Lead developer
+#### - Armand Faux - Lead developer, Project manager
     armand.faux@epitech.eu
 
-### *Contributors* :
+### *Contributors (until v-1.0)* :
 #### - Hugo Eschlimann - Devops engineer
     hugo.eschlimann@epitech.eu
 #### - Luca Orelli - Network developer
