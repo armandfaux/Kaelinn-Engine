@@ -14,7 +14,7 @@
 #include "../math/Vector2.hpp"
 #include "Entity.hpp"
 
-namespace ge {
+namespace kln {
 #define MAX_ENTITIES 10000
 #define FIRST_ENTITY_ID 10000
 
@@ -51,6 +51,6 @@ namespace ge {
         std::vector<std::shared_ptr<Entity>> _entities;
         std::unordered_set<uint32_t> _entityIds;
     };
-} // namespace ge
+} // namespace kln
 
 #endif

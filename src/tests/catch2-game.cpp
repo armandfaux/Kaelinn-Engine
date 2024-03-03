@@ -6,28 +6,28 @@
 #include <engine/core/Scene.hpp>
 
 TEST_CASE("Game", "[ctors]") {
-  ge::Game A;
-  ge::Game B("R-Test");
+  kln::Game A;
+  kln::Game B("R-Test");
 
   REQUIRE((A.getName() == "New Game"));
   REQUIRE((B.getName() == "R-Test"));
 }
 
 TEST_CASE("Game", "[scene management]") {
-  ge::Game game("R-Test");
+  kln::Game game("R-Test");
 
   REQUIRE(!game.isRunning());
   REQUIRE(game.getName() == "R-Test");
 
   std::vector<uint32_t> idSet;
-  std::shared_ptr<ge::Scene> sceneA = game.getSceneById(game.createScene());
-  std::shared_ptr<ge::Scene> sceneB = game.getSceneById(game.createScene());
-  std::shared_ptr<ge::Scene> sceneC = game.getSceneById(game.createScene());
-  std::shared_ptr<ge::Scene> sceneD =
+  std::shared_ptr<kln::Scene> sceneA = game.getSceneById(game.createScene());
+  std::shared_ptr<kln::Scene> sceneB = game.getSceneById(game.createScene());
+  std::shared_ptr<kln::Scene> sceneC = game.getSceneById(game.createScene());
+  std::shared_ptr<kln::Scene> sceneD =
       game.getSceneById(game.createScene("Menu Scene"));
-  std::shared_ptr<ge::Scene> sceneE =
+  std::shared_ptr<kln::Scene> sceneE =
       game.getSceneById(game.createScene("Menu Scene"));
-  std::shared_ptr<ge::Scene> sceneF =
+  std::shared_ptr<kln::Scene> sceneF =
       game.getSceneById(game.createScene("Menu Scene"));
 
   for (auto scene : game.getScenes()) {

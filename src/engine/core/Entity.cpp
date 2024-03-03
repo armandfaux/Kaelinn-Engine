@@ -1,6 +1,6 @@
 #include "Entity.hpp"
 
-namespace ge {
+namespace kln {
     uint32_t getAvailableId(std::vector<std::shared_ptr<Entity>> &entities) {
         uint32_t id = FIRST_ENTITY_ID * 2;
 
@@ -75,4 +75,4 @@ namespace ge {
     void Entity::setId(uint32_t id) { _id = id; }
 
     void Entity::addComp(std::shared_ptr<IComponent> newComp) { _comps.push_back(newComp); }
-} // namespace ge
+} // namespace kln

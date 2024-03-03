@@ -1,6 +1,6 @@
 #include "Utils.hpp"
 
-namespace ge {
+namespace kln {
     uint32_t getAvailableId(std::unordered_set<uint32_t> &set, uint32_t maxValue) {
         uint32_t id = 1;
 
@@ -24,4 +24,4 @@ namespace ge {
         }
         return id;
     }
-} // namespace ge
+} // namespace kln

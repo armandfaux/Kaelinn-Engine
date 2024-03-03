@@ -13,7 +13,7 @@
 #include "../../math/Time.hpp"
 #include "../ASystem.hpp"
 
-namespace ge {
+namespace kln {
     class ENGINE_API PhysicSystem : public ASystem {
       public:
         struct Rect {
@@ -27,6 +27,6 @@ namespace ge {
         void checkCollisions(std::shared_ptr<Scene> &scene);
         void resolvePhysics(std::vector<std::shared_ptr<Entity>> &entities);
     };
-} // namespace ge
+} // namespace kln
 
 #endif /* !PHYSICSYSTEM_HPP_ */

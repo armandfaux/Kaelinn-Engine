@@ -1,6 +1,6 @@
 #include "InputComp.hpp"
 
-using namespace ge;
+using namespace kln;
 
 // STOCK ID CLIENT
 //  CHeck mov id comp id event

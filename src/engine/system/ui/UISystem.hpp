@@ -10,7 +10,7 @@
 #include "../../event/Event.hpp"
 #include "../ASystem.hpp"
 
-namespace ge {
+namespace kln {
     class ENGINE_API UISystem : public ASystem {
       public:
         UISystem();
@@ -18,6 +18,6 @@ namespace ge {
 
         void update(std::shared_ptr<Scene> &scene) override;
     };
-} // namespace ge
+} // namespace kln
 
 #endif /* !UISYSTEM_HPP_ */

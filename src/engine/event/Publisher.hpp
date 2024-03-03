@@ -8,7 +8,7 @@
 #include "Event.hpp"
 #include "Subscriber.hpp"
 
-namespace ge {
+namespace kln {
     class Subscriber;
 
     class ENGINE_API Publisher {
@@ -22,6 +22,6 @@ namespace ge {
       private:
         std::vector<std::shared_ptr<Subscriber>> _subscribers;
     };
-} // namespace ge
+} // namespace kln
 
 #endif /* !PUBLISHER_HPP_ */

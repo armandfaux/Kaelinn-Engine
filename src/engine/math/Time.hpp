@@ -3,7 +3,7 @@
 
 #include <chrono>
 
-namespace ge {
+namespace kln {
     inline double deltaTime = 0;
 }
 

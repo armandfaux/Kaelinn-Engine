@@ -4,13 +4,13 @@
 #include <engine/core/Game.hpp>
 
 TEST_CASE("Prefab", "[Add & Instantiate prefabs]") {
-  ge::Game game;
+  kln::Game game;
   game.createScene();
 
   REQUIRE((game.getPrefabs().size() == 0));
 
-  std::shared_ptr<ge::Entity> prefab = std::make_shared<ge::Entity>("MyPrefab");
-  prefab->addComp(std::make_shared<ge::SpatialComp>());
+  std::shared_ptr<kln::Entity> prefab = std::make_shared<kln::Entity>("MyPrefab");
+  prefab->addComp(std::make_shared<kln::SpatialComp>());
   game.addPrefab(prefab);
 
   REQUIRE((game.getPrefabs().size() == 1));

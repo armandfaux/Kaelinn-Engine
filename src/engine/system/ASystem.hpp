@@ -10,7 +10,7 @@
 #include "../event/Subscriber.hpp"
 #include "../interface/ISystem.hpp"
 
-namespace ge {
+namespace kln {
     class ENGINE_API ASystem : public ISystem {
       public:
         ASystem();
@@ -36,6 +36,6 @@ namespace ge {
         std::shared_ptr<Subscriber> _subscriber;
         Publisher _publisher;
     };
-} // namespace ge
+} // namespace kln
 
 #endif /* !ASYSTEM_HPP_ */

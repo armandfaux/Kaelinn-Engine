@@ -1,6 +1,6 @@
 #include "AComponent.hpp"
 
-using namespace ge;
+using namespace kln;
 
 AComponent::AComponent() {}
 

@@ -1,6 +1,6 @@
 #include "PhysicSystem.hpp"
 
-using namespace ge;
+using namespace kln;
 
 PhysicSystem::PhysicSystem() {
     _name = "Physic";

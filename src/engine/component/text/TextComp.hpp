@@ -16,7 +16,7 @@
 #include "../../math/Vector2.hpp"
 #include "../AComponent.hpp"
 
-namespace ge {
+namespace kln {
     class ENGINE_API TextComp : public AComponent {
       public:
         TextComp(std::string fontPath, size_t size, std::string content, Vector2 offset = {0, 0});
@@ -43,6 +43,6 @@ namespace ge {
         Vector2 _offset;
     };
 
-} // namespace ge
+} // namespace kln
 
 #endif /* !TEXTCOMP_HPP_ */

@@ -14,7 +14,7 @@
 #include "../../core/Entity.hpp"
 #include "../ASystem.hpp"
 
-namespace ge {
+namespace kln {
     // render the sprite components with SFML
     class ENGINE_API RenderSystem : public ASystem {
       public:
@@ -64,6 +64,6 @@ namespace ge {
         std::shared_ptr<sf::RenderWindow> _window;
         std::vector<SfObject> _objects;
     };
-} // namespace ge
+} // namespace kln
 
 #endif /* !RENDERSYSTEM_HPP_ */

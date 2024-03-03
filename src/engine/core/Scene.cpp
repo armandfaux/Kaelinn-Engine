@@ -5,7 +5,7 @@
 #include "../component/spatial/SpatialComp.hpp"
 /////////////////////////////////////////////////
 
-using namespace ge;
+using namespace kln;
 
 Scene::Scene(uint32_t id, std::string name) {
     _id = id;

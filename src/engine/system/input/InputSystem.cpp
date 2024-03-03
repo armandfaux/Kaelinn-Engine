@@ -1,6 +1,6 @@
 #include "InputSystem.hpp"
 
-using namespace ge;
+using namespace kln;
 
 InputSystem::InputSystem(std::shared_ptr<sf::RenderWindow> window) {
     _window = window;

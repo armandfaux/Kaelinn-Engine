@@ -11,7 +11,7 @@
 #include "../../event/Subscriber.hpp"
 #include "../ASystem.hpp"
 
-namespace ge {
+namespace kln {
     class ENGINE_API InputSystem : public ASystem {
       public:
         InputSystem(std::shared_ptr<sf::RenderWindow> window);
@@ -25,6 +25,6 @@ namespace ge {
         std::shared_ptr<sf::RenderWindow> _window;
         std::vector<Key> _pressedKeys;
     };
-} // namespace ge
+} // namespace kln
 
 #endif /* !INPUTSYSTEM_HPP_ */

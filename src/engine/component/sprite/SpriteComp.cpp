@@ -7,7 +7,7 @@
 
 #include "SpriteComp.hpp"
 
-using namespace ge;
+using namespace kln;
 
 SpriteComp::SpriteComp(std::string imagePath) : AComponent() {
     if (!std::filesystem::exists(imagePath)) {

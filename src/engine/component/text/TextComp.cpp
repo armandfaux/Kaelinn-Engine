@@ -1,6 +1,6 @@
 #include "TextComp.hpp"
 
-using namespace ge;
+using namespace kln;
 
 TextComp::TextComp(std::string fontPath, size_t size, std::string content, Vector2 offset) : AComponent() {
     if (!std::filesystem::exists(fontPath)) {

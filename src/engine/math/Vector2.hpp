@@ -8,7 +8,7 @@
 
 #include "../EngineApi.hpp"
 
-namespace ge {
+namespace kln {
     class ENGINE_API Vector2 {
       public:
         Vector2();
@@ -35,6 +35,6 @@ namespace ge {
         os << "(" << vector.x << ", " << vector.y << ")";
         return os;
     }
-} // namespace ge
+} // namespace kln
 
 #endif /* !VECTOR2_HPP_ */

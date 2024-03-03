@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-using namespace ge;
+using namespace kln;
 
 Subscriber::Subscriber(ISystem &parent) : _parent(parent) {}
 

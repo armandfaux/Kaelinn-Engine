@@ -6,19 +6,19 @@
 #include <engine/core/Entity.hpp>
 
 TEST_CASE("Entity", "[component operations]") {
-  ge::Entity entity(1, "name");
-  entity.addComp(std::make_shared<ge::SpatialComp>());
-  entity.addComp(std::make_shared<ge::InputComp>());
+  kln::Entity entity(1, "name");
+  entity.addComp(std::make_shared<kln::SpatialComp>());
+  entity.addComp(std::make_shared<kln::InputComp>());
 
   REQUIRE(entity.hasComp("Spatial"));
   REQUIRE(entity.hasComps(std::vector<std::string>{"Input", "Spatial"}));
 }
 
 TEST_CASE("Entity", "[getters]") {
-  ge::Entity entity(143, "name");
-  entity.addComp(std::make_shared<ge::SpatialComp>());
-  entity.addComp(std::make_shared<ge::InputComp>());
-  entity.addComp(std::make_shared<ge::BodyComp>(10, ge::Vector2(20, 30)));
+  kln::Entity entity(143, "name");
+  entity.addComp(std::make_shared<kln::SpatialComp>());
+  entity.addComp(std::make_shared<kln::InputComp>());
+  entity.addComp(std::make_shared<kln::BodyComp>(10, kln::Vector2(20, 30)));
 
   REQUIRE((entity.getComp("Spatial")->getName() == "Spatial"));
   REQUIRE((entity.getPtrComps().size() == 3));

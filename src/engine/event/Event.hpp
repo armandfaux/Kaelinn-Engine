@@ -9,7 +9,7 @@
 #include <sstream>
 #include <string>
 
-namespace ge {
+namespace kln {
 // systemB will receive events from systemA
 #define SET_EVENT_ROUTE(systemA, systemB) systemA->subscribe(systemB->getSubscriber());
 
@@ -132,6 +132,6 @@ namespace ge {
 
         return os;
     }
-} // namespace ge
+} // namespace kln
 
 #endif /* !EVENT_HPP_ */

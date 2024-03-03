@@ -1,6 +1,6 @@
 #include "NetworkSystem.hpp"
 
-using namespace ge;
+using namespace kln;
 using asio::ip::udp;
 
 NetworkSystem::NetworkSystem(SystemType type, asio::io_context &ioContext, const std::string &port)

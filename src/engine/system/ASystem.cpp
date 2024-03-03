@@ -1,6 +1,6 @@
 #include "ASystem.hpp"
 
-using namespace ge;
+using namespace kln;
 
 ASystem::ASystem() { _subscriber = std::make_shared<Subscriber>(*this); }
 

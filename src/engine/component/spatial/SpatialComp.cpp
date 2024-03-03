@@ -1,6 +1,6 @@
 #include "SpatialComp.hpp"
 
-using namespace ge;
+using namespace kln;
 
 SpatialComp::SpatialComp() {
     _name = "Spatial";

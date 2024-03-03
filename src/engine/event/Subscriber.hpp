@@ -5,7 +5,7 @@
 #include "../interface/ISystem.hpp"
 #include "Event.hpp"
 
-namespace ge {
+namespace kln {
     class ISystem;
 
     class ENGINE_API Subscriber {
@@ -18,6 +18,6 @@ namespace ge {
       private:
         ISystem &_parent;
     };
-} // namespace ge
+} // namespace kln
 
 #endif /* !SUBSCRIBER_HPP_ */

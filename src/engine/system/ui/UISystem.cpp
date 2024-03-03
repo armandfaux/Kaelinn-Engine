@@ -1,6 +1,6 @@
 #include "UISystem.hpp"
 
-using namespace ge;
+using namespace kln;
 
 UISystem::UISystem() { _name = "UISystem"; }
 

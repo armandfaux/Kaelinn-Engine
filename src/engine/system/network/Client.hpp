@@ -6,12 +6,12 @@
 
 using asio::ip::udp;
 
-namespace ge {
+namespace kln {
     struct Client {
         uint32_t clientId;
         uint32_t sceneId;
         udp::endpoint endpoint;
     };
-} // namespace ge
+} // namespace kln
 
 #endif /* !CLIENT_HPP_ */

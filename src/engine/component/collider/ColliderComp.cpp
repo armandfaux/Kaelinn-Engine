@@ -1,6 +1,6 @@
 #include "ColliderComp.hpp"
 
-using namespace ge;
+using namespace kln;
 
 ColliderComp::ColliderComp(Vector2 bounds) {
     _bounds = bounds;
