@@ -16,6 +16,8 @@ namespace kln {
         ~Vector2() = default;
 
         void limit(double value);
+        double distTo(const Vector2 &other);
+        double magn();
 
         // operators
         Vector2 operator+(const Vector2 &other) const;
