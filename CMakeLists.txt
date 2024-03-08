@@ -17,12 +17,12 @@ set(ENABLE_TESTS "none" CACHE STRING "Specify if you want to activate tests: tru
 
 add_subdirectory(src/engine)
 
-set(ENABLE_PROJECT "none" CACHE STRING "Specify the project to compile: rtype, flappy_bird, all")
+set(ENABLE_PROJECT "none" CACHE STRING "Specify the project to compile (ignore to compile only the engine):")
 
 ### CALLS YOUR GAME'S CMAKELISTS
-# if (ENABLE_PROJECT STREQUAL "mygame" OR ENABLE_PROJECT STREQUAL "all")
-#     add_subdirectory(path/to/game)
-# endif()
+if (ENABLE_PROJECT STREQUAL "mygame" OR ENABLE_PROJECT STREQUAL "all")
+    add_subdirectory(src/games/simulation) # Path to your game CMakeLists
+endif()
 
 if (DEFINED ENABLE_TESTS AND ENABLE_TESTS STREQUAL "true")
     file(GLOB_RECURSE TEST_SOURCE_FILES src/tests/*.cpp)

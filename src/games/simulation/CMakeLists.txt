@@ -11,24 +11,28 @@ else()
 endif()
 
 set(GAME_CLIENT mygame-client)
-set(GAME_SERVER mygame-server)
+# set(GAME_SERVER mygame-server)
 
-file(COPY assets DESTINATION ${CMAKE_BINARY_DIR}/path/to/game)
+file(COPY assets DESTINATION ${CMAKE_BINARY_DIR}/build/game)
 
 # GAME CLIENT
-file(GLOB_RECURSE CLIENT_SOURCE_FILES path/to/client/*.cpp)
+file(GLOB_RECURSE CLIENT_SOURCE_FILES *.cpp)
 add_executable(${GAME_CLIENT} ${CLIENT_SOURCE_FILES})
 target_link_libraries(${GAME_CLIENT} PRIVATE engine)
 
 # GAME SERVER (TO IMPLEMENT NETWORKING)
-file(GLOB_RECURSE SERVER_SOURCE_FILES path/to/server/*.cpp)
-add_executable(${GAME_SERVER} ${SERVER_SOURCE_FILES})
-target_link_libraries(${GAME_SERVER} PRIVATE engine)
+# file(GLOB_RECURSE SERVER_SOURCE_FILES path/to/server/*.cpp)
+# add_executable(${GAME_SERVER} ${SERVER_SOURCE_FILES})
+# target_link_libraries(${GAME_SERVER} PRIVATE engine)
 
 if(DEFINED ACTIVATE_LINTER AND ACTIVATE_LINTER STREQUAL "clang-tidy")
     find_program(CLANG_TIDY_EXE NAMES "clang-tidy")
     set(CLANG_TIDY_COMMAND "${CLANG_TIDY_EXE}" "-checks=-*,modernize-*")
-    set_target_properties(${GAME_CLIENT} ${GAME_SERVER} PROPERTIES CXX_CLANG_TIDY "${CLANG_TIDY_COMMAND}")
+    set_target_properties(
+        ${GAME_CLIENT}
+        # ${GAME_SERVER}
+        PROPERTIES CXX_CLANG_TIDY "${CLANG_TIDY_COMMAND}"
+    )
 endif()
 
 if(DEFINED ACTIVATE_LINTER AND ACTIVATE_LINTER STREQUAL "cppcheck")
@@ -48,7 +52,10 @@ find_program(CMAKE_CXX_CLANGFORMAT NAMES clang-format)
 if (CMAKE_CXX_CLANGFORMAT)
     message(STATUS "Found clang-format: ${CMAKE_CXX_CLANGFORMAT}")
     execute_process(
-        COMMAND ${CMAKE_CXX_CLANGFORMAT} -i --style=file ${CLIENT_SOURCE_FILES} ${SERVER_SOURCE_FILES}
+        COMMAND
+            ${CMAKE_CXX_CLANGFORMAT} -i --style=file
+            ${CLIENT_SOURCE_FILES}
+            # ${SERVER_SOURCE_FILES}
     )
 endif ()
 
@@ -75,10 +82,13 @@ if (WIN32)
 else()
     set(CPACK_GENERATOR TGZ)
 endif()
-set(CPACK_PACKAGE_FILE_NAME "r-type")
+set(CPACK_PACKAGE_FILE_NAME "my-game")
 set(CPACK_INCLUDE_TOPLEVEL_DIRECTORY OFF)
 
-install(TARGETS ${GAME_CLIENT} ${GAME_SERVER} engine
+install(TARGETS
+    ${GAME_CLIENT}
+    # ${GAME_SERVER}
+    engine
     DESTINATION mygame
 )
 
