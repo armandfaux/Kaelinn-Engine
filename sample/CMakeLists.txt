@@ -13,7 +13,7 @@ endif()
 set(CLIENT sample-client)
 # set(SERVER sample-server)
 
-file(COPY assets DESTINATION ${CMAKE_BINARY_DIR}/build/game)
+file(COPY assets DESTINATION ${CMAKE_BINARY_DIR}/../build/sample)
 
 # GAME CLIENT
 file(GLOB_RECURSE CLIENT_SOURCE_FILES
