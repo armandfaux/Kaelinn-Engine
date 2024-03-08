@@ -37,8 +37,7 @@ Vector2 Vector2::operator/(double scalar) const {
     if (scalar != 0.0) { // division by zero check
         return Vector2(x / scalar, y / scalar);
     } else {
-        // TODO Handle the error appropriately (throw an exception, set to a
-        // default value, etc.)
+        // TODO Handle the error appropriately (exception)
         return Vector2();
     }
 }

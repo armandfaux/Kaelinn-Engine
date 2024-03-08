@@ -25,7 +25,7 @@ namespace kln {
         collisionExit,      // Communicate 2 entities that stop colliding
         switchScene,        // Order a scene change
         clientConnection,   // Inform a newly connected client
-        exit                // (Currently unused)
+        exit                // Close the window and exit the game
     };
 
     enum Key {
