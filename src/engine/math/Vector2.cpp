@@ -13,6 +13,17 @@ void Vector2::limit(double value) {
     y = std::min(y, value);
 }
 
+#include <iostream>
+
+double Vector2::distTo(const Vector2 &other) {
+    std::cout << "[DEBUG] Vector2.distTo() : " << sqrt(pow(other.x - x, 2) + pow(other.y - y, 2)) << std::endl;
+    return std::sqrt(pow(other.x - x, 2) + pow(other.y - y, 2));
+}
+
+double Vector2::magn() {
+    return std::sqrt(x * x + y * y);
+}
+
 // operators
 Vector2 Vector2::operator+(const Vector2 &other) const { return Vector2(x + other.x, y + other.y); }
 

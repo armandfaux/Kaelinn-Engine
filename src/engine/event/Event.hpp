@@ -15,17 +15,17 @@ namespace kln {
 
     enum Type {
         unknown,
-        pos,
-        input,
-        newEntity,
-        delEntity,
-        newScene,
-        delScene,
-        collisionEnter,
-        collisionExit,
-        switchScene,
-        clientConnection,
-        exit
+        pos,                // Communicate an entity position
+        input,              // Communicate a user input
+        newEntity,          // Order the creation of an entity
+        delEntity,          // Order the deletion of an entity
+        newScene,           // Order the creation of a scene
+        delScene,           // Order the deletion of a scene
+        collisionEnter,     // Communicate 2 entities that start colliding
+        collisionExit,      // Communicate 2 entities that stop colliding
+        switchScene,        // Order a scene change
+        clientConnection,   // Inform a newly connected client
+        exit                // (Currently unused)
     };
 
     enum Key {
@@ -90,16 +90,22 @@ namespace kln {
         bool keyReleased = false;
         uint32_t entityId1 = 0;
         uint32_t entityId2 = 0;
-        // std::string entityName = "";
         Vector2 pos = {0, 0};
         uint32_t sceneId = 0;
         std::string prefabName = "";
 
         template <class Archive> void serialize(Archive &ar) {
-            ar(CEREAL_NVP(type), CEREAL_NVP(clientId), CEREAL_NVP(key), CEREAL_NVP(keyPressed), CEREAL_NVP(keyReleased),
-               CEREAL_NVP(entityId1), CEREAL_NVP(entityId2),
-               // CEREAL_NVP(entityName),
-               CEREAL_NVP(pos), CEREAL_NVP(sceneId), CEREAL_NVP(prefabName));
+            ar(
+                CEREAL_NVP(type),
+                CEREAL_NVP(clientId),
+                CEREAL_NVP(key),
+                CEREAL_NVP(keyPressed),
+                CEREAL_NVP(keyReleased),
+                CEREAL_NVP(entityId1), CEREAL_NVP(entityId2),
+                CEREAL_NVP(pos),
+                CEREAL_NVP(sceneId),
+                CEREAL_NVP(prefabName)
+            );
         }
     };
 
@@ -123,9 +129,8 @@ namespace kln {
            << "\n  | .key              : " << event.key
            << "\n  | .keyPressed       : " << (event.keyPressed ? "True" : "False")
            << "\n  | .keyReleased      : " << (event.keyReleased ? "True" : "False")
-           << "\n  | .entityId1        : " << event.entityId1 << "\n  | .entityId2        : "
-           << event.entityId2
-           // << "\n  | .entityName       : " << event.entityName
+           << "\n  | .entityId1        : " << event.entityId1
+           << "\n  | .entityId2        : " << event.entityId2
            << "\n  | .sceneId          : " << event.sceneId
            << "\n  | .prefabName       : " << (event.prefabName == "" ? "None" : event.prefabName)
            << "\n  +-------------------+\n";
