@@ -1,6 +1,6 @@
 #include "RenderSystem.hpp"
 
-using namespace ge;
+using namespace kln;
 
 RenderSystem::RenderSystem(std::string title, unsigned int width, unsigned int height, unsigned int bitsPerPixel,
                            std::string style) {

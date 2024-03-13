@@ -1,6 +1,6 @@
 #include "SceneSystem.hpp"
 
-using namespace ge;
+using namespace kln;
 
 SceneSystem::SceneSystem(Game& parent) : _parent(parent)
 {

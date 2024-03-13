@@ -1,0 +1,6 @@
+# compilation
+build
+CMakeUserPresets.json
+
+# editor directories and files
+.vscode

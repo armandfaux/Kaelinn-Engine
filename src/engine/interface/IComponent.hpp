@@ -5,7 +5,7 @@
 #include <memory>
 #include <string>
 
-namespace ge {
+namespace kln {
     // An entity's component
     class IComponent {
       public:
@@ -15,6 +15,6 @@ namespace ge {
         // MUST be overrided to allow prefab duplication
         virtual std::shared_ptr<IComponent> clone() = 0;
     };
-} // namespace ge
+} // namespace kln
 
 #endif

@@ -1,6 +1,6 @@
 #include "BodyComp.hpp"
 
-using namespace ge;
+using namespace kln;
 
 BodyComp::BodyComp(Vector2 bounds) {
     _name = "Body";

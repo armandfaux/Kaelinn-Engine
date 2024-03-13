@@ -8,7 +8,7 @@
 #include "../event/Publisher.hpp"
 #include "../event/Subscriber.hpp"
 
-namespace ge {
+namespace kln {
     class Publisher;
     class Subscriber;
 
@@ -31,6 +31,6 @@ namespace ge {
         virtual void addEvent(Event &) = 0;
         virtual void clearEventQueue() = 0;
     };
-} // namespace ge
+} // namespace kln
 
 #endif

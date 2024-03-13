@@ -1,6 +1,6 @@
 #include "Game.hpp"
 
-using namespace ge;
+using namespace kln;
 
 // ctors
 Game::Game() {
@@ -51,14 +51,14 @@ std::vector<std::shared_ptr<Entity>> &Game::getPrefabs() { return _prefabs; }
 
 bool Game::isRunning() { return _isRunning; }
 
-bool ge::Game::sceneExists(uint32_t sceneId) {
+bool kln::Game::sceneExists(uint32_t sceneId) {
     auto it =
         std::find_if(_scenes.begin(), _scenes.end(), [&](const auto &scene) { return scene->getId() == sceneId; });
 
     return it != _scenes.end();
 }
 
-bool ge::Game::sceneExists(std::string sceneName) {
+bool kln::Game::sceneExists(std::string sceneName) {
     auto it =
         std::find_if(_scenes.begin(), _scenes.end(), [&](const auto &scene) { return scene->getName() == sceneName; });
 

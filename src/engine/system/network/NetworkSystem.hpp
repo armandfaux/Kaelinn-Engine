@@ -23,7 +23,7 @@
 
 using asio::ip::udp;
 
-namespace ge {
+namespace kln {
 #define MAX_CLIENTS 20
 
     class ENGINE_API NetworkSystem : public ASystem {
@@ -83,6 +83,6 @@ namespace ge {
         std::unordered_set<uint32_t> _clientIds;
         std::vector<Client> _clients;
     };
-} // namespace ge
+} // namespace kln
 
 #endif /* !NetworkSystem_HPP_ */

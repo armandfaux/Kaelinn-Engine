@@ -5,7 +5,7 @@
 #include "../../math/Vector2.hpp"
 #include "../AComponent.hpp"
 
-namespace ge {
+namespace kln {
     class ENGINE_API BodyComp : public AComponent {
       public:
         // TODO more ctors
@@ -37,6 +37,6 @@ namespace ge {
         Vector2 _bounds;
         Vector2 _velocity;
     };
-} // namespace ge
+} // namespace kln
 
 #endif /* !BODYCOMP_HPP_ */

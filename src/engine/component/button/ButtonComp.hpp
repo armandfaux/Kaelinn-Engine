@@ -6,7 +6,7 @@
 #include "../../math/Vector2.hpp"
 #include "../AComponent.hpp"
 
-namespace ge {
+namespace kln {
     class ENGINE_API ButtonComp : public AComponent {
       public:
         ButtonComp(std::vector<Event> events);
@@ -24,6 +24,6 @@ namespace ge {
       private:
         std::vector<Event> _events;
     };
-} // namespace ge
+} // namespace kln
 
 #endif /* !BUTTONCOMP_HPP_ */

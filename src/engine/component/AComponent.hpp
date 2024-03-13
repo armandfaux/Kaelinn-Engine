@@ -7,7 +7,7 @@
 #include "../EngineApi.hpp"
 #include "../interface/IComponent.hpp"
 
-namespace ge {
+namespace kln {
     class ENGINE_API AComponent : public IComponent {
       public:
         AComponent();
@@ -21,6 +21,6 @@ namespace ge {
         uint32_t _id;
         std::string _name;
     };
-} // namespace ge
+} // namespace kln
 
 #endif /* !ACOMPONENT_HPP_ */

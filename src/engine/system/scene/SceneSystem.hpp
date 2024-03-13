@@ -6,7 +6,7 @@
 #include "../../event/Event.hpp"
 #include "../ASystem.hpp"
 
-namespace ge {
+namespace kln {
     class ENGINE_API SceneSystem : public ASystem {
       public:
         SceneSystem(Game &parent);
@@ -18,6 +18,6 @@ namespace ge {
         Game &_parent;
         bool debug = false;
     };
-} // namespace ge
+} // namespace kln
 
 #endif /* !SCENESYSTEM_HPP_ */

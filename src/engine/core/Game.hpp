@@ -11,7 +11,7 @@
 #include "../system/network/NetworkSystem.hpp"
 #include "Scene.hpp"
 
-namespace ge {
+namespace kln {
 #define UPDATE(systems)                                                                                                \
     for (auto &system : systems) {                                                                                     \
         system->update(scene);                                                                                         \
@@ -61,6 +61,6 @@ namespace ge {
 
         bool _isRunning;
     };
-} // namespace ge
+} // namespace kln
 
 #endif /* !GAME_HPP_ */

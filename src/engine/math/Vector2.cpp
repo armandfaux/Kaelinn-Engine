@@ -1,6 +1,6 @@
 #include "Vector2.hpp"
 
-using namespace ge;
+using namespace kln;
 
 // ctor
 Vector2::Vector2() : x(0.0), y(0.0) {}
@@ -11,6 +11,17 @@ void Vector2::limit(double value) {
     x = std::min(x, value);
     y = std::max(y, -value);
     y = std::min(y, value);
+}
+
+#include <iostream>
+
+double Vector2::distTo(const Vector2 &other) {
+    std::cout << "[DEBUG] Vector2.distTo() : " << sqrt(pow(other.x - x, 2) + pow(other.y - y, 2)) << std::endl;
+    return std::sqrt(pow(other.x - x, 2) + pow(other.y - y, 2));
+}
+
+double Vector2::magn() {
+    return std::sqrt(x * x + y * y);
 }
 
 // operators
@@ -26,8 +37,7 @@ Vector2 Vector2::operator/(double scalar) const {
     if (scalar != 0.0) { // division by zero check
         return Vector2(x / scalar, y / scalar);
     } else {
-        // TODO Handle the error appropriately (throw an exception, set to a
-        // default value, etc.)
+        // TODO Handle the error appropriately (exception)
         return Vector2();
     }
 }

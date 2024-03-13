@@ -8,7 +8,7 @@
 #include "../EngineApi.hpp"
 #include "../interface/IComponent.hpp"
 
-namespace ge {
+namespace kln {
 #define MAX_ENTITIES 10000
 #define FIRST_ENTITY_ID 10000
 
@@ -41,6 +41,6 @@ namespace ge {
     };
 
     uint32_t getAvailableId(std::vector<std::shared_ptr<Entity>> &entities);
-} // namespace ge
+} // namespace kln
 
 #endif

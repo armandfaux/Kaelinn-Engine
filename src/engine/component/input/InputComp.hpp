@@ -5,7 +5,7 @@
 #include "../../event/Event.hpp"
 #include "../AComponent.hpp"
 
-namespace ge {
+namespace kln {
     class ENGINE_API InputComp : public AComponent {
       public:
         InputComp();
@@ -20,5 +20,5 @@ namespace ge {
       private:
         uint32_t _clientId;
     };
-} // namespace ge
+} // namespace kln
 #endif /* !INPUTCOMP_HPP_ */

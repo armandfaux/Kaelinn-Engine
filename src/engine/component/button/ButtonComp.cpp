@@ -1,6 +1,6 @@
 #include "ButtonComp.hpp"
 
-using namespace ge;
+using namespace kln;
 
 ButtonComp::ButtonComp(std::vector<Event> events) {
     _name = "Button";

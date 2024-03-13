@@ -12,7 +12,7 @@
 #include <iostream>
 #include <string>
 
-namespace ge {
+namespace kln {
 class Exception : public std::exception {
 public:
   Exception(std::string const &message,
@@ -26,6 +26,6 @@ private:
   std::string _message;
   std::string _component;
 };
-} // namespace ge
+} // namespace kln
 
 #endif /* !EXCEPTION_HPP_ */

@@ -7,7 +7,7 @@
 #include "../../math/Vector2.hpp"
 #include "../AComponent.hpp"
 
-namespace ge {
+namespace kln {
     class ENGINE_API ColliderComp : public AComponent {
       public:
         ColliderComp(Vector2 bounds);
@@ -33,6 +33,6 @@ namespace ge {
         Vector2 _offset;
         std::vector<uint32_t> _collidingEntities;
     };
-} // namespace ge
+} // namespace kln
 
 #endif /* !COLLIDERCOMP_HPP_ */

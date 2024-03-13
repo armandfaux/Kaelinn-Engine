@@ -7,7 +7,7 @@
 #include "../../math/Vector2.hpp"
 #include "../AComponent.hpp"
 
-namespace ge {
+namespace kln {
     class ENGINE_API SpatialComp : public AComponent {
       public:
         SpatialComp();
@@ -27,6 +27,6 @@ namespace ge {
         std::string _names;
         // TODO rotation
     };
-} // namespace ge
+} // namespace kln
 
 #endif

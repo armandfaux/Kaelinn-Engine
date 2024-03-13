@@ -1,6 +1,6 @@
 #include "PhysicSystem.hpp"
 
-using namespace ge;
+using namespace kln;
 
 PhysicSystem::PhysicSystem() {
     _name = "Physic";
@@ -95,6 +95,7 @@ void PhysicSystem::resolvePhysics(std::vector<std::shared_ptr<Entity>> &entities
 
             // Velocity normalisation
             if (vel.x != 0 || vel.y != 0) {
+                // TODO Use Vector2.magn() instead
                 double magn = std::sqrt(vel.x * vel.x + vel.y * vel.y);
                 if (magn != 0 && magn != INFINITY) {
                     vel.x /= magn / std::abs(vel.x);

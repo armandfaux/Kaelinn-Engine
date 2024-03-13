@@ -8,7 +8,7 @@
 
 #include "../EngineApi.hpp"
 
-namespace ge {
+namespace kln {
     class ENGINE_API Vector2 {
       public:
         Vector2();
@@ -16,6 +16,8 @@ namespace ge {
         ~Vector2() = default;
 
         void limit(double value);
+        double distTo(const Vector2 &other);
+        double magn();
 
         // operators
         Vector2 operator+(const Vector2 &other) const;
@@ -35,6 +37,6 @@ namespace ge {
         os << "(" << vector.x << ", " << vector.y << ")";
         return os;
     }
-} // namespace ge
+} // namespace kln
 
 #endif /* !VECTOR2_HPP_ */

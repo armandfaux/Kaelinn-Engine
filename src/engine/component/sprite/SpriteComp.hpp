@@ -9,7 +9,7 @@
 #include "../../math/Vector2.hpp"
 #include "../AComponent.hpp"
 
-namespace ge {
+namespace kln {
     class ENGINE_API SpriteComp : public AComponent {
       public:
         SpriteComp(std::string imagePath);
@@ -34,6 +34,6 @@ namespace ge {
         Vector2 _rect;
         Vector2 _offset;
     };
-} // namespace ge
+} // namespace kln
 
 #endif /* !SPRITECOMP_HPP_ */

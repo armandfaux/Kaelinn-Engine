@@ -2,7 +2,7 @@
 
 #include <iostream> // TODO remove
 
-using namespace ge;
+using namespace kln;
 
 Publisher::Publisher() {}
 
