@@ -3,12 +3,14 @@
 
 #include <iostream>
 #include <memory>
+#include <bitset>
 #include <vector>
 
 #include "../EngineApi.hpp"
 #include "../interface/IComponent.hpp"
 
-namespace kln {
+namespace kln
+{
     using Entity = uint32_t;
 
 //     #define MAX_ENTITIES 10000

@@ -2,19 +2,16 @@
 
 using namespace kln;
 
-RenderSystem::RenderSystem(std::string title, unsigned int width, unsigned int height, unsigned int bitsPerPixel,
-                           std::string style) {
+RenderSystem::RenderSystem(std::string title, uint16_t width, uint16_t height, uint16_t bitsPerPixel, WindowStyle style)
+{
     sf::VideoMode mode(width, height, bitsPerPixel);
     _window = std::make_shared<sf::RenderWindow>(mode, title,
-                                                 ((style == "None")         ? sf::Style::None
-                                                  : (style == "Titlebar")   ? sf::Style::Titlebar
-                                                  : (style == "Resize")     ? sf::Style::Resize
-                                                  : (style == "Close")      ? sf::Style::Close
-                                                  : (style == "Fullscreen") ? sf::Style::Fullscreen
-                                                                            : sf::Style::Default));
-
-    _systemType = SystemType::client;
-    std::cout << "[SYSTEM] Render System successfully created\n";
+         ((style == WindowStyle::NONE)          ? sf::Style::None
+        : (style == WindowStyle::TITLE)         ? sf::Style::Titlebar
+        : (style == WindowStyle::RESIZE)        ? sf::Style::Resize
+        : (style == WindowStyle::CLOSE)         ? sf::Style::Close
+        : (style == WindowStyle::FULLSCREEN)    ? sf::Style::Fullscreen
+        : sf::Style::Default));
 }
 
 // getters
@@ -31,33 +28,16 @@ RenderSystem::SfObject RenderSystem::getObjectById(uint32_t id) {
 std::shared_ptr<sf::RenderWindow> RenderSystem::getWindow() { return _window; }
 
 void RenderSystem::update(std::shared_ptr<Scene> &scene) {
-    std::vector<std::shared_ptr<Entity>> &entities = scene->getEntities();
-
     _window->clear(sf::Color::Black);
-    // TODO cut this code in several function ? might be better engineering to
-    // do here required from the entity : (SpatialComp, SpriteComp)
-    for (auto &entity : entities) {
+    handleEvents();
+    // TODO Only need the information on new and deleted entities
+
+    for (auto entity : scene->getEntities()) {
         if (entity->hasComps(std::vector<std::string>{"Spatial", "Sprite"})) {
             // Checks if the entity exists in current sprite list
             SpatialComp *spatialComp = dynamic_cast<SpatialComp *>(entity->getComp("Spatial").get());
             SpriteComp *spriteComp = dynamic_cast<SpriteComp *>(entity->getComp("Sprite").get());
 
-            for (auto &event : _eventQueue) {
-                switch (event.type) {
-                case Type::pos:
-                    if (event.entityId1 == entity->getId()) {
-                        spatialComp->setPos(event.pos);
-                    }
-                    break;
-                case Type::switchScene:
-                    _objects.clear();
-                    break;
-                case Type::exit:
-                    std::cout << "[RENDERSYSTEM] Exit event received\n";
-                    _window->close();
-                    break;
-                }
-            }
 
             if (!isEntityCreated(entity->getId())) {
                 initObject(entity);
@@ -78,6 +58,22 @@ void RenderSystem::update(std::shared_ptr<Scene> &scene) {
         }
     }
     _window->display();
+}
+
+void RenderSystem::handleEvents()
+{
+    for (auto &event : _eventQueue) {
+        switch (event.type) {
+        case Type::switchScene:
+            // TODO add the possibility to keep a scene loaded in SFML ?
+            _objects.clear();
+            break;
+        case Type::exit:
+            std::cout << "[RENDERSYSTEM] Exit event received\n";
+            _window->close();
+            break;
+        }
+    }
 }
 
 bool RenderSystem::isEntityCreated(uint32_t id) {
