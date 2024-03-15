@@ -3,20 +3,23 @@
 using namespace kln;
 
 // ctors
-Game::Game() {
+Game::Game()
+{
     _name = "New Game";
     _isRunning = false;
     std::cout << "[ENGINE] New Game created\n";
 }
 
-Game::Game(std::string name) {
+Game::Game(std::string name)
+{
     _name = name;
     _isRunning = false;
     std::cout << "[ENGINE] " << name << " created\n";
     std::cout << "...\n";
 }
 
-Game::Game(std::string name, SystemType type) {
+Game::Game(std::string name, SystemType type)
+{
     _name = name;
     _isRunning = false;
     _type = type;
@@ -25,11 +28,18 @@ Game::Game(std::string name, SystemType type) {
 }
 
 // getters
-std::string Game::getName() { return _name; }
+std::string Game::getName()
+{
+    return _name;
+}
 
-std::vector<std::shared_ptr<Scene>> &Game::getScenes() { return _scenes; }
+std::vector<std::shared_ptr<Scene>> &Game::getScenes()
+{
+    return _scenes;
+}
 
-std::shared_ptr<Scene> &Game::getSceneById(uint32_t id) {
+std::shared_ptr<Scene> &Game::getSceneById(uint32_t id)
+{
     for (auto &scene : _scenes) {
         if (scene->getId() == id) {
             return scene;
@@ -38,7 +48,8 @@ std::shared_ptr<Scene> &Game::getSceneById(uint32_t id) {
     throw std::runtime_error("No scene found by id");
 }
 
-std::shared_ptr<Scene> &Game::getSceneByName(std::string name) {
+std::shared_ptr<Scene> &Game::getSceneByName(std::string name)
+{
     for (auto &scene : _scenes) {
         if (scene->getName() == name) {
             return scene;
@@ -47,18 +58,23 @@ std::shared_ptr<Scene> &Game::getSceneByName(std::string name) {
     throw std::runtime_error("No scene found by name");
 }
 
-std::vector<std::shared_ptr<Entity>> &Game::getPrefabs() { return _prefabs; }
+// std::vector<std::shared_ptr<Entity>> &Game::getPrefabs() { return _prefabs; }
 
-bool Game::isRunning() { return _isRunning; }
+bool Game::isRunning()
+{
+    return _isRunning;
+}
 
-bool kln::Game::sceneExists(uint32_t sceneId) {
+bool kln::Game::sceneExists(uint32_t sceneId)
+{
     auto it =
         std::find_if(_scenes.begin(), _scenes.end(), [&](const auto &scene) { return scene->getId() == sceneId; });
 
     return it != _scenes.end();
 }
 
-bool kln::Game::sceneExists(std::string sceneName) {
+bool kln::Game::sceneExists(std::string sceneName)
+{
     auto it =
         std::find_if(_scenes.begin(), _scenes.end(), [&](const auto &scene) { return scene->getName() == sceneName; });
 
@@ -66,11 +82,18 @@ bool kln::Game::sceneExists(std::string sceneName) {
 }
 
 // Setters
-void Game::setStatus(bool running) { _isRunning = running; }
+void Game::setStatus(bool running)
+{
+    _isRunning = running;
+}
 
-void Game::setName(std::string name) { _name = name; }
+void Game::setName(std::string name)
+{
+    _name = name;
+}
 
-void Game::setActiveScene(uint32_t sceneId) {
+void Game::setActiveScene(uint32_t sceneId)
+{
     // Clients can run only 1 scene at once
     if (sceneExists(sceneId)) {
         if (_type == SystemType::client) {
@@ -86,7 +109,8 @@ void Game::setActiveScene(uint32_t sceneId) {
     }
 }
 
-void Game::setActiveScene(std::string sceneName) {
+void Game::setActiveScene(std::string sceneName)
+{
     // Clients can run only 1 scene at once
     if (_type == SystemType::client) {
         for (auto &scene : _scenes) {
@@ -102,7 +126,8 @@ void Game::setActiveScene(std::string sceneName) {
     }
 }
 
-void Game::run() {
+void Game::run()
+{
     _isRunning = true;
 
     // Game loop
@@ -127,32 +152,8 @@ void Game::run() {
 }
 
 // scene management
-uint32_t Game::createScene() {
-    // create a scene with the closest available default name ("New Scene", "New
-    // Scene (1)", "New Scene (2)", etc...)
-    std::string defaultName = "New Scene";
-    uint32_t id = 1;
-    uint32_t copyIndex = 0;
-
-    for (auto &scene : _scenes) {
-        if (scene->getId() == id) {
-            if (++id > 99) { // Id max reached
-                std::cout << "[GAME] Failed to create the scene \"" << defaultName
-                          << "\": maximum amount of scenes reached\n";
-                return 0;
-            }
-        }
-        if (scene->getName() == defaultName) {
-            defaultName = "New Scene (" + std::to_string(++copyIndex) + ")";
-        }
-    }
-    _scenes.push_back(std::make_shared<Scene>(id, defaultName));
-
-    std::cout << "[" << _name << "] Scene \"" << defaultName << "\" succesfully created with id " << id << "\n";
-    return id;
-}
-
-uint32_t Game::createScene(std::string name) {
+uint32_t Game::createScene(std::string name = "New Scene")
+{
     std::string newName = name;
     uint32_t id = 1;
     uint32_t copyIndex = 0;
@@ -176,50 +177,51 @@ uint32_t Game::createScene(std::string name) {
     return id;
 }
 
-void Game::duplicateScene(uint32_t sceneId) {
-    // Find the scene to duplicate
-    auto it = std::find_if(_scenes.begin(), _scenes.end(),
-                           [sceneId](const auto &scene) { return scene->getId() == sceneId; });
+// void Game::duplicateScene(uint32_t sceneId) {
+//     // Find the scene to duplicate
+//     auto it = std::find_if(_scenes.begin(), _scenes.end(),
+//                            [sceneId](const auto &scene) { return scene->getId() == sceneId; });
 
-    if (it != _scenes.end()) {
-        std::cout << "[GAME] Duplicating scene: " << (*it)->getName() << "\n";
-        std::shared_ptr<Scene> originalScene = *it;
+//     if (it != _scenes.end()) {
+//         std::cout << "[GAME] Duplicating scene: " << (*it)->getName() << "\n";
+//         std::shared_ptr<Scene> originalScene = *it;
 
-        // Create a new scene by copying the original using the copy constructor
-        std::shared_ptr<Scene> newScene = std::make_shared<Scene>(*originalScene);
+//         // Create a new scene by copying the original using the copy constructor
+//         std::shared_ptr<Scene> newScene = std::make_shared<Scene>(*originalScene);
 
-        // Generate a unique name for the duplicated scene
-        std::string newName = newScene->getName();
-        uint32_t id = 1;
-        uint32_t copyIndex = 0;
+//         // Generate a unique name for the duplicated scene
+//         std::string newName = newScene->getName();
+//         uint32_t id = 1;
+//         uint32_t copyIndex = 0;
 
-        auto isDuplicate = [&](const auto &scene) { return scene->getId() == id || scene->getName() == newName; };
+//         auto isDuplicate = [&](const auto &scene) { return scene->getId() == id || scene->getName() == newName; };
 
-        // Check if the generated id or name already exists
-        while (std::any_of(_scenes.begin(), _scenes.end(), isDuplicate)) {
-            if (++id > 99) { // Id max reached
-                std::cout << "[" << _name << "] Failed to create the scene \"" << newName
-                          << "\": maximum amount of scenes reached\n";
-                return;
-            }
+//         // Check if the generated id or name already exists
+//         while (std::any_of(_scenes.begin(), _scenes.end(), isDuplicate)) {
+//             if (++id > 99) { // Id max reached
+//                 std::cout << "[" << _name << "] Failed to create the scene \"" << newName
+//                           << "\": maximum amount of scenes reached\n";
+//                 return;
+//             }
 
-            newName = newScene->getName() + " (" + std::to_string(++copyIndex) + ")";
-        }
+//             newName = newScene->getName() + " (" + std::to_string(++copyIndex) + ")";
+//         }
 
-        // Set the new name and id for the duplicated scene
-        newScene->setName(newName);
-        newScene->setId(id);
+//         // Set the new name and id for the duplicated scene
+//         newScene->setName(newName);
+//         newScene->setId(id);
 
-        std::cout << "[GAME] Scene \"" << newName << "\" successfully created with id " << id << "\n";
+//         std::cout << "[GAME] Scene \"" << newName << "\" successfully created with id " << id << "\n";
 
-        // Add the duplicated scene to the scenes vector
-        _scenes.push_back(newScene);
-    } else {
-        std::cout << "[GAME] Scene with id " << sceneId << " not found for duplication\n";
-    }
-}
+//         // Add the duplicated scene to the scenes vector
+//         _scenes.push_back(newScene);
+//     } else {
+//         std::cout << "[GAME] Scene with id " << sceneId << " not found for duplication\n";
+//     }
+// }
 
-void Game::rmSceneById(uint32_t sceneId) {
+void Game::rmSceneById(uint32_t sceneId)
+{
     auto it =
         std::remove_if(_scenes.begin(), _scenes.end(), [&](const auto &scene) { return scene->getId() == sceneId; });
 
@@ -231,9 +233,12 @@ void Game::rmSceneById(uint32_t sceneId) {
     }
 }
 
-void Game::addSystem(std::shared_ptr<ISystem> system) { _systems.push_back(system); }
+void Game::addSystem(std::shared_ptr<ISystem> system)
+{
+    _systems.push_back(system);
+}
 
-void Game::addPrefab(std::shared_ptr<Entity> prefab) { _prefabs.push_back(prefab); }
+// void Game::addPrefab(std::shared_ptr<Entity> prefab) { _prefabs.push_back(prefab); }
 
 // dtor
 Game::~Game() {}

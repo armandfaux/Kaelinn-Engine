@@ -34,10 +34,11 @@ Vector2 Vector2::operator*(double scalar) const { return Vector2(x * scalar, y *
 
 // TODO currently not tested
 Vector2 Vector2::operator/(double scalar) const {
-    if (scalar != 0.0) { // division by zero check
+    if (scalar != 0.0) { // Division by zero check
         return Vector2(x / scalar, y / scalar);
     } else {
         // TODO Handle the error appropriately (exception)
+        std::cout << "[MATH | Vector2] Division by zero forbidden" << std::endl;
         return Vector2();
     }
 }

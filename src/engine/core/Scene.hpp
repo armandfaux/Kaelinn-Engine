@@ -5,6 +5,7 @@
 #include <memory>
 #include <string>
 #include <unordered_set>
+#include <unordered_map>
 #include <vector>
 
 #include "../EngineApi.hpp"
@@ -14,42 +15,52 @@
 #include "../math/Vector2.hpp"
 #include "Entity.hpp"
 
-namespace kln {
-#define MAX_ENTITIES 10000
-#define FIRST_ENTITY_ID 10000
+namespace kln
+{
+    using ComponentMap = std::unordered_map<Entity, std::shared_ptr<IComponent>>;
 
-    class ENGINE_API Scene {
-      public:
-        Scene(uint32_t id, std::string name);
-        Scene(const Scene &other);
-        ~Scene();
+    class ENGINE_API Scene
+    {
+        public:
+            Scene(uint32_t id, std::string name);
+            ~Scene();
 
-        // getters
-        uint32_t getId();
-        std::string getName();
-        std::vector<std::shared_ptr<Entity>> &getEntities();
-        std::shared_ptr<Entity> &getEntityById(uint32_t);
-        bool isActive();
+            // SCENE COPY DISABLED FOR NOW
+            // Scene(const Scene &other);
 
-        void setActive(bool status);
+            // getters
+            uint32_t getId();
+            std::string getName();
+            std::unordered_set<Entity> getEntities();
+            // std::unordered_set<Entity> getEntitiesWithSignature({Signature});
+            std::unordered_map<std::string, ComponentMap>& getAllComps();
+            ComponentMap& getComps(std::string);
+            bool isActive();
 
-        // setters
-        void setId(uint32_t id);
-        void setName(std::string name);
+            // setters
+            void setId(uint32_t id);
+            void setName(std::string name);
+            void setActive(bool status);
 
-        // entity & prefab management
-        std::shared_ptr<Entity> createEntity(std::string name);
-        std::shared_ptr<Entity> instantiate(std::shared_ptr<Entity> &entity);
-        std::shared_ptr<Entity> instantiate(std::shared_ptr<Entity> &entity, Event &event);
-        void rmEntityById(uint32_t id);
+            // entity & prefab management
+            Entity availableId(Entity);
+            Entity newEntity();
+            void rmEntity(Entity);
 
-      private:
-        bool _active = false;
+            void addComp(Entity, std::shared_ptr<IComponent>);
+            void rmComp(Entity, std::string);
 
-        uint32_t _id;
-        std::string _name;
-        std::vector<std::shared_ptr<Entity>> _entities;
-        std::unordered_set<uint32_t> _entityIds;
+            // PREFAB SYSTEM DISABLED FOR NOW
+            // std::shared_ptr<Entity> instantiate(std::shared_ptr<Entity> &entity);
+            // std::shared_ptr<Entity> instantiate(std::shared_ptr<Entity> &entity, Event &event);
+
+        private:
+            uint32_t _id;
+            std::string _name;
+            bool _active = false;
+
+            std::unordered_set<Entity> _entities;
+            std::unordered_map<std::string, ComponentMap> _allComps;
     };
 } // namespace kln
 

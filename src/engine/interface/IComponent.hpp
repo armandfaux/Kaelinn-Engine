@@ -9,8 +9,8 @@ namespace kln {
     // An entity's component
     class IComponent {
       public:
-        virtual uint32_t getId() = 0;
-        virtual std::string getName() = 0;
+        virtual uint32_t getId() = 0; // Likely useless
+        virtual std::string getName() = 0; // TODO Rename to something like "getType"
 
         // MUST be overrided to allow prefab duplication
         virtual std::shared_ptr<IComponent> clone() = 0;

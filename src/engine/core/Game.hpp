@@ -12,11 +12,12 @@
 #include "Scene.hpp"
 
 namespace kln {
-#define UPDATE(systems)                                                                                                \
-    for (auto &system : systems) {                                                                                     \
-        system->update(scene);                                                                                         \
-        system->clearEventQueue();                                                                                     \
-    }
+// NO LONGER USED
+// #define UPDATE(systems)                                                                                                \
+//     for (auto &system : systems) {                                                                                     \
+//         system->update(scene);                                                                                         \
+//         system->clearEventQueue();                                                                                     \
+//     }
 
     class ENGINE_API Game {
       public:
@@ -30,7 +31,9 @@ namespace kln {
         std::vector<std::shared_ptr<Scene>> &getScenes();
         std::shared_ptr<Scene> &getSceneById(uint32_t id);
         std::shared_ptr<Scene> &getSceneByName(std::string name);
-        std::vector<std::shared_ptr<Entity>> &getPrefabs();
+        // PREFAB SYSTEM DISABLED FOR NOW
+        // std::vector<std::shared_ptr<Entity>> &getPrefabs();
+
         bool isRunning();
         bool sceneExists(uint32_t sceneId);
         bool sceneExists(std::string sceneName);
@@ -41,14 +44,17 @@ namespace kln {
         void setActiveScene(uint32_t sceneId);
         void setActiveScene(std::string sceneName);
 
-        uint32_t createScene();
+
         uint32_t createScene(std::string name);
 
-        void duplicateScene(uint32_t sceneId);
+        // SCENE PREFAB DISABLED FOR NOW
+        // void duplicateScene(uint32_t sceneId);
         void rmSceneById(uint32_t sceneId);
 
         void addSystem(std::shared_ptr<ISystem> system);
-        void addPrefab(std::shared_ptr<Entity> prefab);
+
+        // PREFAB SYSTEM DISABLED FOR NOW
+        // void addPrefab(std::shared_ptr<Entity> prefab);
 
         void run();
 
@@ -57,7 +63,7 @@ namespace kln {
         std::string _name;
         std::vector<std::shared_ptr<Scene>> _scenes;
         std::vector<std::shared_ptr<ISystem>> _systems;
-        std::vector<std::shared_ptr<Entity>> _prefabs;
+        // std::vector<std::shared_ptr<Entity>> _prefabs;
 
         bool _isRunning;
     };
