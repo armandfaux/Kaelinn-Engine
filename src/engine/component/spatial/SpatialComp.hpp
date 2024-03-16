@@ -10,7 +10,6 @@
 namespace kln {
     class ENGINE_API SpatialComp : public AComponent {
       public:
-        SpatialComp();
         SpatialComp(Vector2 pos);
         virtual ~SpatialComp() = default;
 
@@ -24,7 +23,6 @@ namespace kln {
 
       private:
         Vector2 _position;
-        std::string _names;
         // TODO rotation
     };
 } // namespace kln

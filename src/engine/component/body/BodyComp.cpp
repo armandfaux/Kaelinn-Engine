@@ -2,32 +2,32 @@
 
 using namespace kln;
 
-BodyComp::BodyComp(Vector2 bounds) {
-    _name = "Body";
-    _bounds = bounds;
-}
-
-BodyComp::BodyComp(double mass, Vector2 bounds) {
-    _name = "Body";
-    _mass = mass;
-    _bounds = bounds;
-    _speed = 0;
-}
-
-BodyComp::BodyComp(double mass, Vector2 bounds, double speed) {
-    _name = "Body";
-    _mass = mass;
-    _bounds = bounds;
-    _speed = speed;
-}
-
-BodyComp::BodyComp(double mass, Vector2 bounds, double speed, Vector2 velocity) {
-    _name = "Body";
+BodyComp::BodyComp(double mass = 1, Vector2 bounds = {0, 0}, double speed = 0, Vector2 velocity = {0, 0}) {
+    _type = CompType::BODY;
     _mass = mass;
     _bounds = bounds;
     _speed = speed;
     _velocity = velocity;
 }
+
+// BodyComp::BodyComp(Vector2 bounds) {
+//     _type = "Body";
+//     _bounds = bounds;
+// }
+
+// BodyComp::BodyComp(double mass, Vector2 bounds) {
+//     _type = "Body";
+//     _mass = mass;
+//     _bounds = bounds;
+//     _speed = 0;
+// }
+
+// BodyComp::BodyComp(double mass, Vector2 bounds, double speed) {
+//     _type = "Body";
+//     _mass = mass;
+//     _bounds = bounds;
+//     _speed = speed;
+// }
 
 // getters
 

@@ -12,8 +12,6 @@
 namespace kln {
     class ENGINE_API SpriteComp : public AComponent {
       public:
-        SpriteComp(std::string imagePath);
-        SpriteComp(std::string imagePath, Vector2 rect);
         SpriteComp(std::string imagePath, Vector2 rect, Vector2 offset);
         virtual ~SpriteComp() = default;
 

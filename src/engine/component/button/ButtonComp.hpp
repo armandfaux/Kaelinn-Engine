@@ -18,7 +18,6 @@ namespace kln {
 
         // setter
         void setEvents(std::vector<Event> events);
-        void setEvent(Event event);
         std::shared_ptr<IComponent> clone() override;
 
       private:

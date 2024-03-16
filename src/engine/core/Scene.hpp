@@ -1,6 +1,7 @@
 #ifndef SCENE_HPP
 #define SCENE_HPP
 
+#include <bitset>
 #include <iostream>
 #include <memory>
 #include <string>
@@ -18,6 +19,7 @@
 namespace kln
 {
     using ComponentMap = std::unordered_map<Entity, std::shared_ptr<IComponent>>;
+    using Signature = std::bitset<CompType::COUNT>;
 
     class ENGINE_API Scene
     {
@@ -32,9 +34,11 @@ namespace kln
             uint32_t getId();
             std::string getName();
             std::unordered_set<Entity> getEntities();
-            // std::unordered_set<Entity> getEntitiesWithSignature({Signature});
-            std::unordered_map<std::string, ComponentMap>& getAllComps();
-            ComponentMap& getComps(std::string);
+            std::unordered_set<Entity> getEntitiesWithSignature(Signature);
+            Signature getSignature(Entity);
+            std::unordered_map<CompType, ComponentMap>& getAllComps();
+            ComponentMap& getComps(CompType);
+            std::shared_ptr<IComponent>& getComp(Entity, CompType);
             bool isActive();
 
             // setters
@@ -48,7 +52,7 @@ namespace kln
             void rmEntity(Entity);
 
             void addComp(Entity, std::shared_ptr<IComponent>);
-            void rmComp(Entity, std::string);
+            void rmComp(Entity, CompType);
 
             // PREFAB SYSTEM DISABLED FOR NOW
             // std::shared_ptr<Entity> instantiate(std::shared_ptr<Entity> &entity);
@@ -60,7 +64,8 @@ namespace kln
             bool _active = false;
 
             std::unordered_set<Entity> _entities;
-            std::unordered_map<std::string, ComponentMap> _allComps;
+            std::unordered_map<Entity, Signature> _signatures;
+            std::unordered_map<CompType, ComponentMap> _allComps;
     };
 } // namespace kln
 

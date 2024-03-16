@@ -2,7 +2,9 @@
 #define COLLIDERCOMP_HPP_
 
 #include <memory>
+#include <vector>
 
+#include "../../core/Entity.hpp"
 #include "../../EngineApi.hpp"
 #include "../../math/Vector2.hpp"
 #include "../AComponent.hpp"
@@ -10,9 +12,6 @@
 namespace kln {
     class ENGINE_API ColliderComp : public AComponent {
       public:
-        ColliderComp(Vector2 bounds);
-        ColliderComp(Vector2 bounds, Vector2 offset);
-        ColliderComp(Vector2 bounds, bool solid);
         ColliderComp(Vector2 bounds, Vector2 offset, bool solid);
         ~ColliderComp();
 
@@ -20,10 +19,10 @@ namespace kln {
         Vector2 getBounds();
         Vector2 getOffset();
         bool isSolid();
-        bool isCollidingWith(uint32_t id);
+        bool isCollidingWith(Entity);
 
-        void addCollidingEntity(uint32_t id);
-        void rmCollidingEntity(uint32_t id);
+        void addCollidingEntity(Entity);
+        void rmCollidingEntity(Entity);
 
         std::shared_ptr<IComponent> clone() override;
 
@@ -31,7 +30,8 @@ namespace kln {
         bool _solid = false;
         Vector2 _bounds;
         Vector2 _offset;
-        std::vector<uint32_t> _collidingEntities;
+        // TODO Change to a set
+        std::vector<Entity> _collidingEntities;
     };
 } // namespace kln
 

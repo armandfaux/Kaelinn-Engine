@@ -39,14 +39,30 @@ std::unordered_set<Entity> Scene::getEntities()
     return _entities;
 }
 
-std::unordered_map<std::string, ComponentMap>& Scene::getAllComps()
+std::unordered_set<Entity> Scene::getEntitiesWithSignature(Signature sign)
+{
+    // TODO
+    return _entities;
+}
+
+Signature Scene::getSignature(Entity entity)
+{
+    return _signatures[entity];
+}
+
+std::unordered_map<CompType, ComponentMap>& Scene::getAllComps()
 {
     return _allComps;
 }
 
-ComponentMap& Scene::getComps(std::string type)
+ComponentMap& Scene::getComps(CompType type)
 {
     return _allComps[type];
+}
+
+std::shared_ptr<IComponent>& Scene::getComp(Entity entity, CompType type)
+{
+    return _allComps[type][entity];
 }
 
 // NO LONGER REQUIRED
@@ -85,24 +101,28 @@ Entity Scene::availableId(Entity id = 0)
 }
 
 Entity Scene::newEntity() {
-    Entity id = availableId();
-    _entities.insert(id);
-    return id;
+    Entity entity = availableId();
+
+    _entities.insert(entity);
+    _signatures.insert(std::make_pair(entity, Signature()));
+    return entity;
 }
 
 void Scene::rmEntity(Entity entity)
 {
+    // TODO Remove components
+    _signatures.erase(entity);
     _entities.erase(entity);
 }
 
 void Scene::addComp(Entity entity, std::shared_ptr<IComponent> comp)
 {
     // TODO check if entity doesn't have such comp
-    _allComps[comp->getName()][entity] = comp;
+    _allComps[comp->getType()][entity] = comp;
     // TODO + edit signature
 }
 
-void Scene::rmComp(Entity entity, std::string type)
+void Scene::rmComp(Entity entity, CompType type)
 {
     _allComps[type].erase(entity);
 }

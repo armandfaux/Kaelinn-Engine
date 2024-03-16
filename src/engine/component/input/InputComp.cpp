@@ -6,7 +6,7 @@ using namespace kln;
 //  CHeck mov id comp id event
 
 InputComp::InputComp() {
-    _name = "Input";
+    _type = CompType::INPUT;
     _clientId = 0;
 }
 

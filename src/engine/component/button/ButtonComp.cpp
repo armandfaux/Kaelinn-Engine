@@ -3,7 +3,7 @@
 using namespace kln;
 
 ButtonComp::ButtonComp(std::vector<Event> events) {
-    _name = "Button";
+    _type = CompType::BUTTON;
     _events = events;
 }
 

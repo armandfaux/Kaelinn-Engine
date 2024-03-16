@@ -11,9 +11,9 @@ namespace kln {
         // TODO more ctors
         // BodyComp(); // auto mass / bounds
         // BodyComp(double _mass); // auto bounds
-        BodyComp(Vector2 bounds);
-        BodyComp(double mass, Vector2 bounds);
-        BodyComp(double mass, Vector2 bounds, double speed);
+        // BodyComp(Vector2 bounds);
+        // BodyComp(double mass, Vector2 bounds);
+        // BodyComp(double mass, Vector2 bounds, double speed);
         BodyComp(double mass, Vector2 bounds, double speed, Vector2 velocity);
         virtual ~BodyComp() = default;
 

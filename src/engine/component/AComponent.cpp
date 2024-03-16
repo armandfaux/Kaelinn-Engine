@@ -4,8 +4,9 @@ using namespace kln;
 
 AComponent::AComponent() {}
 
-uint32_t AComponent::getId() { return _id; }
-
-std::string AComponent::getName() { return _name; }
+CompType AComponent::getType()
+{
+    return _type;
+}
 
 AComponent::~AComponent() {}

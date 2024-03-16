@@ -2,19 +2,23 @@
 
 using namespace kln;
 
-SpatialComp::SpatialComp() {
-    _name = "Spatial";
-    _position = Vector2(0, 0);
-}
-
-SpatialComp::SpatialComp(Vector2 pos) {
-    _name = "Spatial";
+SpatialComp::SpatialComp(Vector2 pos = {0, 0}) {
+    _type = CompType::SPATIAL;
     _position = pos;
 }
 
 // getters
-Vector2 SpatialComp::getPos() { return _position; }
+Vector2 SpatialComp::getPos()
+{
+    return _position;
+}
 
-void SpatialComp::setPos(Vector2 newPos) { _position = newPos; }
+void SpatialComp::setPos(Vector2 newPos)
+{
+    _position = newPos;
+}
 
-std::shared_ptr<IComponent> SpatialComp::clone() { return std::make_shared<SpatialComp>(_position); }
+std::shared_ptr<IComponent> SpatialComp::clone()
+{
+    return std::make_shared<SpatialComp>(_position);
+}

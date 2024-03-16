@@ -6,14 +6,26 @@
 #include <string>
 
 namespace kln {
-    // An entity's component
-    class IComponent {
-      public:
-        virtual uint32_t getId() = 0; // Likely useless
-        virtual std::string getName() = 0; // TODO Rename to something like "getType"
+    enum CompType
+    {
+        SPATIAL = 0,
+        SPRITE,
+        BODY,
+        COLLIDER,
+        INPUT,
+        BUTTON,
+        TEXT,
+        COUNT // Keeping track of the amount of components
+    };
 
-        // MUST be overrided to allow prefab duplication
-        virtual std::shared_ptr<IComponent> clone() = 0;
+    // An entity's component
+    class IComponent
+    {
+        public:
+            virtual CompType getType() = 0;
+
+            // MUST be overrided to allow prefab duplication
+            virtual std::shared_ptr<IComponent> clone() = 0;
     };
 } // namespace kln
 

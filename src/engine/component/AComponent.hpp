@@ -14,12 +14,11 @@ namespace kln {
         ~AComponent();
 
         // getters
-        uint32_t getId() override;
-        std::string getName() override;
+        CompType getType() override;
 
       protected:
         uint32_t _id;
-        std::string _name;
+        CompType _type;
     };
 } // namespace kln
 

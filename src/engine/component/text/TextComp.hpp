@@ -19,7 +19,7 @@
 namespace kln {
     class ENGINE_API TextComp : public AComponent {
       public:
-        TextComp(std::string fontPath, size_t size, std::string content, Vector2 offset = {0, 0});
+        TextComp(std::string fontPath, size_t size, std::string content, Vector2 offset);
         virtual ~TextComp() = default;
 
         // getters

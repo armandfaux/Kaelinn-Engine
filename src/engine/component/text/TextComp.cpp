@@ -2,12 +2,13 @@
 
 using namespace kln;
 
-TextComp::TextComp(std::string fontPath, size_t size, std::string content, Vector2 offset) : AComponent() {
+TextComp::TextComp(std::string fontPath, size_t size = 12, std::string content = "New Text", Vector2 offset = {0, 0}) : AComponent() {
+    _type = CompType::TEXT;
+
     if (!std::filesystem::exists(fontPath)) {
         // TODO Exception
         std::cout << "[TEXT] " << fontPath << " - No such file or directory";
     }
-    _name = "Text";
     _fontPath = fontPath;
     _size = size;
     _content = content;
