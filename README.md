@@ -2,8 +2,8 @@
 Kaelinn Engine is a 2D engine for building games and simulations
 
 ## Prerequisites
-The engine is fully self-contained which means you don't need to install the necessary libraries
-Instead, you'll just have to install Conan, a packet manager that will install all the dependencies for you
+The engine is fully self-contained which means you don't need to worry about the dependencies.
+Instead, you'll just have to install Conan, a packet manager that will download all the necessary libraries for you
 See : https://docs.conan.io/2/installation.html
 
 ## 👥 The Team
